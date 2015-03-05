@@ -5,6 +5,11 @@ if [ ! -n "$WERCKER_REMOTTY_NOTIFY_TOKEN" ]; then
   exit 1
 fi
 
+if [ ! -n "$WERCKER_REMOTTY_NOTIFY_ROOM_ID" ]; then
+  error 'Please specify your room id'
+  exit 1
+fi
+
 if [ ! -n "$WERCKER_REMOTTY_NOTIFY_PARTICIPATION_ID" ]; then
   error 'Please specify your participation id'
   exit 1
@@ -42,7 +47,7 @@ fi
 
 payload="message=$WERCKER_REMOTTY_NOTIFY_MESSAGE"
 
-RESULT=`curl -s -d "$payload" "https://www.remotty.net/rooms/1/bot/message.json?key=$WERCKER_REMOTTY_NOTIFY_TOKEN&participation_id=$WERCKER_REMOTTY_NOTIFY_PARTICIPATION_ID" --output $WERCKER_STEP_TEMP/result.txt -w "%{http_code}"`
+RESULT=`curl -s -d "$payload" "https://www.remotty.net/rooms/$WERCKER_REMOTTY_NOTIFY_ROOM_ID/bot/message.json?key=$WERCKER_REMOTTY_NOTIFY_TOKEN&participation_id=$WERCKER_REMOTTY_NOTIFY_PARTICIPATION_ID" --output $WERCKER_STEP_TEMP/result.txt -w "%{http_code}"`
 
 if [ "$RESULT" = "500" ]; then
   fatal <$WERCKER_STEP_TEMP/result.txt
