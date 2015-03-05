@@ -1,0 +1,22 @@
+name: remotty-notify
+version: 0.0.1
+description: Sends notifications to Remotty
+keywords:
+  - notification
+  - remotty
+properties:
+  token:
+    type: string
+    required: true
+  room_id:
+    type: integer
+    required: true
+  participation_id:
+    type: integer
+    required: true
+  passed_message:
+    type: string
+    required: false
+  failed_message:
+    type: string
+    required: false
