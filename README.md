@@ -23,7 +23,7 @@ Add `REMOTTY_TOKEN` as deploy target or application environment variable.
 
     build:
         after-steps:
-            - mahm/remotty-notify:
+            - mahlab/remotty-notify:
                 token: $REMOTTY_TOKEN
                 room_id: 1
                 participation_id: 10
