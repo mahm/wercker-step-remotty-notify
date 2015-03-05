@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/edb93a3e94114514c178d39a2be1d067/m "wercker status")](https://app.wercker.com/project/bykey/edb93a3e94114514c178d39a2be1d067)
+
 # remotty-notify
 
 Send a message to a [Remotty](https://www.remotty.net/).
