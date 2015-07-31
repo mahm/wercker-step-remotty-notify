@@ -6,9 +6,7 @@ Send a message to a [Remotty](https://www.remotty.net/).
 
 ### required
 
-* `token` - Your Remotty Key
-* `room_id` - Your Room ID
-* `participation_id` - Your Participation ID
+* `webhook_url` - Your Remotty Webhook URL
 
 ### optional
 
@@ -24,7 +22,5 @@ Add `REMOTTY_TOKEN` as deploy target or application environment variable.
     build:
         after-steps:
             - mahlab/remotty-notify:
-                token: $REMOTTY_TOKEN
-                room_id: 1
-                participation_id: 10
+                webhook_url: $REMOTTY_WEBHOOK_URL
 
