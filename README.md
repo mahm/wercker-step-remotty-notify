@@ -16,7 +16,7 @@ Send a message to a [Remotty](https://www.remotty.net/).
 Example
 --------
 
-Add `REMOTTY_TOKEN` as deploy target or application environment variable.
+Add `REMOTTY_WEBHOOK_URL` as deploy target or application environment variable.
 
 
     build:
