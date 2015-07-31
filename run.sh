@@ -1,17 +1,7 @@
 #!/bin/bash
 
-if [ ! -n "$WERCKER_REMOTTY_NOTIFY_TOKEN" ]; then
-  error 'Please specify the token'
-  exit 1
-fi
-
-if [ ! -n "$WERCKER_REMOTTY_NOTIFY_ROOM_ID" ]; then
-  error 'Please specify your room id'
-  exit 1
-fi
-
-if [ ! -n "$WERCKER_REMOTTY_NOTIFY_PARTICIPATION_ID" ]; then
-  error 'Please specify your participation id'
+if [ ! -n "$WERCKER_REMOTTY_WEBHOOK_URL" ]; then
+  error 'Please specify the webhook_url'
   exit 1
 fi
 
@@ -37,7 +27,6 @@ else
   export WERCKER_REMOTTY_NOTIFY_MESSAGE="$WERCKER_REMOTTY_NOTIFY_FAILED_MESSAGE"
 fi
 
-
 if [ "$WERCKER_REMOTTY_NOTIFY_ON" = "failed" ]; then
   if [ "$WERCKER_RESULT" = "passed" ]; then
     echo "Skipping.."
@@ -47,7 +36,7 @@ fi
 
 payload="message=$WERCKER_REMOTTY_NOTIFY_MESSAGE"
 
-RESULT=`curl -s -d "$payload" "https://www.remotty.net/rooms/$WERCKER_REMOTTY_NOTIFY_ROOM_ID/bot/message.json?key=$WERCKER_REMOTTY_NOTIFY_TOKEN&participation_id=$WERCKER_REMOTTY_NOTIFY_PARTICIPATION_ID" --output $WERCKER_STEP_TEMP/result.txt -w "%{http_code}"`
+RESULT=`curl -s -d "$payload" "$WERCKER_REMOTTY_WEBHOOK_URL" --output $WERCKER_STEP_TEMP/result.txt -w "%{http_code}"`
 
 if [ "$RESULT" = "500" ]; then
   fatal <$WERCKER_STEP_TEMP/result.txt
