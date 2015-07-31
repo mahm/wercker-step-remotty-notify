@@ -16,11 +16,11 @@ Send a message to a [Remotty](https://www.remotty.net/).
 Example
 --------
 
-Add `REMOTTY_WEBHOOK_URL` as deploy target or application environment variable.
+Add `WERCKER_REMOTTY_WEBHOOK_URL` as deploy target or application environment variable.
 
 
     build:
         after-steps:
             - mahlab/remotty-notify:
-                webhook_url: $REMOTTY_WEBHOOK_URL
+                webhook_url: $WERCKER_REMOTTY_WEBHOOK_URL
 
