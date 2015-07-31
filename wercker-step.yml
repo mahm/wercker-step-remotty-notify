@@ -5,14 +5,8 @@ keywords:
   - notification
   - remotty
 properties:
-  token:
+  webhook_url:
     type: string
-    required: true
-  room_id:
-    type: integer
-    required: true
-  participation_id:
-    type: integer
     required: true
   passed_message:
     type: string
